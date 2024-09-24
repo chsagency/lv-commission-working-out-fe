@@ -10,7 +10,7 @@ import { useState } from "react";
 // const labels = ["Year 1", "Year 2", "Year 3", "Year 4", "Year 5"];
 
 function App() {
-  const [totalpremium, setTotalPremium] = useState(100);
+  const [totalpremium, setTotalPremium] = useState(298.64);
   const [commissionPercentage, setCommissionPercentage] = useState(40);
   // const [yearlyMortgages, setYearlyMortgages] = useState(100);
   // const [conversionRate, setConversionRate] = useState(75);
@@ -26,8 +26,8 @@ function App() {
   // const retentionRate = result.acf.retention_rate;
   // const howThisIsCalculatedDesc = result.acf.how_is_this_calculated_description;
 
-  const withoutIPT = totalpremium / 1.12;
-  const commissionAmount = withoutIPT / 100 * commissionPercentage;
+  const withoutIPT = Math.round((totalpremium / 1.12) * 100) / 100;
+  const commissionPaid = Math.round((withoutIPT / 100 * commissionPercentage) * 100) / 100;
 
   return (
     <div className="App">
@@ -46,9 +46,17 @@ function App() {
             </label>
             <input
               className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-neutral-400 leading-tight focus:outline-none focus:shadow-outline mulish-regular"
-              id="commission"
+              id="totalpremium"
               type="text"
-              placeholder="Enter £"
+              placeholder="Enter e.g £298.64"
+              onChange={(totalpremium) => {
+                console.log(totalpremium.target.value);
+                setTotalPremium(
+                  totalpremium.target.value !== ""
+                    ? totalpremium.target.value
+                    : 298.64
+                );
+              }}
             />
           </div>
           <div className="min-w-inputBox">
@@ -60,24 +68,46 @@ function App() {
             </label>
             <input
               className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-neutral-400 leading-tight focus:outline-none focus:shadow-outline mulish-regular"
-              id="yearlymortgages"
+              id="commissionpercentage"
               type="number"
               min="0"
               max="100"
-              placeholder="Enter amount %"
+              placeholder="Enter amount e.g. %40"
+              onChange={(commissionpercentage) => {
+                console.log(commissionpercentage.target.value);
+                setCommissionPercentage(
+                  commissionpercentage.target.value !== ""
+                    ? commissionpercentage.target.value
+                    : 40
+                );
+              }}
             />
           </div>
         </form>
 
-        <div className="flex justify-center gap-8 flex-col md:flex-row mt-4">
-          <h2 className="livvic-bold text-gray-700">
-            Commissionable premium (without IPT): £{withoutIPT}
-          </h2>
+        <div className="flex justify-center gap-8 flex-col md:flex-row mt-12">
+          <div className="text-center">
+            <h2 className="livvic-bold text-gray-700">
+              Commissionable premium (without IPT):
+            </h2>
 
-          <h2 className="livvic-bold text-gray-700">
-            Commission paid (without IPT):
-          </h2>
+            <p className="livvic-bold text-earnings text-lv-slate-blue">
+              £{withoutIPT}
+            </p>
+          </div>
         </div>
+
+        <div className="flex justify-center gap-8 flex-col md:flex-row mt-4">
+          <div className="text-center">
+            <h2 className="livvic-bold text-gray-700">Commission Paid:</h2>
+
+            <p className="livvic-bold text-earnings text-lv-slate-blue">
+              £{commissionPaid}
+            </p>
+          </div>
+        </div>
+
+
       </div>
     </div>
   );
