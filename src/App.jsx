@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <div className="container mx-auto py-12 px-4">
         <h2 className="text-center mb-12 text-header text-lv-green livvic-light">
-          Commision Estimates Calculator
+          Commission Estimates Calculator
         </h2>
 
         <form className="flex justify-center gap-8 flex-col md:flex-row">
@@ -64,7 +64,7 @@ function App() {
               className="block text-gray-700 text-sm mb-2 livvic-bold"
               htmlFor="yearlymortgages"
             >
-              Commision Percentage
+              Commission Percentage
             </label>
             <input
               className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-neutral-400 leading-tight focus:outline-none focus:shadow-outline mulish-regular"
