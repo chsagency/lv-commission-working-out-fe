@@ -109,11 +109,8 @@ function App() {
 
         <div className="flex justify-center gap-8 flex-row mt-4">
           <p className="text-center text-gray-700 mulish-regular max-w-md text-small">
-            The price that’s quoted to the customer is including IPT, but the
-            commission is calculated before the IPT is added. The figure is
-            calculated by Base Premium x 12% (to take away the IPT take amount
-            divide it by 1.12) then take the amount of commission minus the IPT
-            divide that by 100 and times that by the commission percentage.
+            The price that’s quoted to the customer is including Insurance
+            Premium Tax. Commission is calculated minus IPT which is 12%.
           </p>
         </div>
       </div>
