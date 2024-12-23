@@ -48,7 +48,7 @@ function App() {
               className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-neutral-400 leading-tight focus:outline-none focus:shadow-outline mulish-regular"
               id="totalpremium"
               type="text"
-              placeholder="Enter e.g £298.64"
+              placeholder="Enter amount"
               onChange={(totalpremium) => {
                 console.log(totalpremium.target.value);
                 setTotalPremium(
@@ -72,7 +72,7 @@ function App() {
               type="number"
               min="0"
               max="100"
-              placeholder="Enter amount e.g. %40"
+              placeholder="Enter %"
               onChange={(commissionpercentage) => {
                 console.log(commissionpercentage.target.value);
                 setCommissionPercentage(
